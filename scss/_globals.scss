@@ -1,0 +1,201 @@
+html {
+  // Let user control zoom level in their browser
+  font-size: 100%;
+  // Свойства width и height включают в себя значения полей и границ,
+  // но не отступов (margin)
+  box-sizing: border-box;
+}
+
+// The ::before and ::after pseudo-elements in CSS allows you to insert
+// content onto a page without it needing to be in the HTML. While the
+// end result is not actually in the DOM, it appears on the page as if it is.
+*,
+*::before,
+*::after {
+  // Наследует значение родителя.
+  box-sizing: inherit;
+}
+
+nav {
+  padding: 24px;
+}
+
+// Text
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  line-height: 1.15;
+  color: $darkBlue;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2.31rem;
+  margin-bottom: 1.5rem;
+
+  @include breakpoint-up(large) {
+    font-size: $font-xlg;
+  }
+}
+
+h2 {
+  font-size: 1.875rem;
+  margin-bottom: 1.5625rem;
+
+  @include breakpoint-up(large) {
+    font-size: 2.25rem;
+    margin-bottom: 2.25rem;
+  }
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 2.25rem;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Public Sans", sans-serif;
+  font-size: $font-med;
+  font-weight: 300;
+  color: $grayishBlue;
+  line-height: 1.3rem;
+  min-height: 200vh;
+
+  overflow-x: hidden;
+
+  @include breakpoint-up(large) {
+    font-size: $font-med;
+  }
+
+  &.noscroll {
+    overflow: hidden;
+  }
+}
+
+// Spacing
+.container {
+  max-width: 69.375rem;
+  margin: 0 auto;
+
+  &--pall {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    padding-top: 4.375rem;
+    padding-bottom: 4.375rem;
+
+    @include breakpoint-up(large) {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  &--py {
+    padding-top: 4.375rem;
+    padding-bottom: 4.375rem;
+
+    @include breakpoint-up(large) {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  &--px {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  &--pt {
+    padding-top: 4.375rem;
+
+    @include breakpoint-up(large) {
+      padding-top: 6rem;
+    }
+  }
+
+  &--pb {
+    padding-bottom: 4.375rem;
+
+    @include breakpoint-up(large) {
+      padding-bottom: 6rem;
+    }
+  }
+
+  &--pr {
+    padding-right: 1.5rem;
+  }
+
+  &--pl {
+    padding-left: 1.5rem;
+  }
+}
+
+// Flexbox
+.flex {
+  display: flex;
+
+  &-jc-sb {
+    justify-content: space-between;
+  }
+
+  &-jc-c {
+    justify-content: center;
+  }
+
+  // THE DIFFERENCE BETWEEN ALIGN-ITEMS & ALIGN-CONTENT
+
+  // The align-items property of flex-box aligns the
+  // items inside a flex container along the cross axis
+  // just like justify-content does along the main axis.
+  // (For the default flex-direction: row the cross axis
+  // corresponds to vertical and the main axis corresponds
+  // to horizontal. With flex-direction: column those two
+  // are interchanged respectively).
+
+  // But align-content is for multi line flexible boxes.
+  // It has no effect when items are in a single line. It
+  // aligns the whole structure according to its value.
+  &-ai-c {
+    align-items: center;
+  }
+}
+
+// Buttons
+button,
+.button {
+  display: inline-block;
+  padding: 0.775rem 2.1875rem;
+  background: linear-gradient(to right, $limeGreen, $brightCyan);
+  border: 0;
+  color: $white;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: $font-sm;
+  transition: opacity 300ms ease-in-out;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+// Visibility
+.hide-for-mobile {
+  @include breakpoint-down(medium) {
+    display: none;
+  }
+}
+
+.hide-for-desktop {
+  @include breakpoint-up(large) {
+    display: none;
+  }
+}
